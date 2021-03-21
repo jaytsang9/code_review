@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Review
 
 # Create your views here.
 def index(request):
-    return HttpResponse("CODE REVIEWS ARE HERE")
+    reviews = Review.objects.all()
+    return render(request, 'reviews/reviews.html', context)

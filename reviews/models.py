@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class review(models.Model):
+class Review(models.Model):
     title = models.CharField(max_length=64)
     author = models.CharField(max_length=64)
     code = models.TextField()
