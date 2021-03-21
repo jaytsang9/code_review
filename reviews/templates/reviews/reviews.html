@@ -7,13 +7,16 @@
     <div class="row align-items-center">
         {% for review in reviews %}
         <div class="col-md-12 align-self-center">
-            <div class="card" style="width: 18rem;">
+            <div class="card bg-secondary" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ review.title }} - {{review.votes}}</h5>
-                    <p class="card-text">{{ review.author }}</p>
-                    <p class="card-text">{{ review.code }}</p>
+                    <h5 class="card-title">{{ review.title }} - {{review.votes}} Votes</h5>
+                    <p class="card-text">User: {{ review.author }}</p>
+                    <div class="card">
+                        <p class="card-text">{{ review.code }}</p>
+                    </div>
                     <p href="#" class="card-link">{{ review.get_lang_type_display }}</p>
                     <p href="#" class="card-link">{{ review.date }}</p>
+                    <button type="button" class="btn btn-info">Reply</button>
                 </div>
             </div>
         </div>
