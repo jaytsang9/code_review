@@ -13,11 +13,6 @@ class Review(models.Model):
             ('JAVA', 'Java'),
             ('CPP', 'C++'),
             ('C', 'C'),
-            ('CSHARP', 'C#'),
-            ('R', 'R'),
-            ('RBY', 'Ruby'),
-            ('GO', 'Go'),
-            ('SWIFT', 'Swift'),
             ('SQL', 'SQL')
         ]
     )
