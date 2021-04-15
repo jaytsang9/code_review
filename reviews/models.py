@@ -1,10 +1,11 @@
 from django.db import models
+from django.forms import ModelForm
 
 class Review(models.Model):
     title = models.CharField(max_length=64)
     author = models.CharField(max_length=64)
     code = models.TextField()
-    lang_type = models.CharField(
+    language = models.CharField(
         max_length = 12,
         choices=[
             ('PY', 'Python'),
@@ -18,3 +19,10 @@ class Review(models.Model):
     )
     votes = models.IntegerField()
     date = models.DateField()
+    def __str__(self):
+            return self.get_language_display()
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['title', 'author', 'code', 'language', 'votes', 'date']

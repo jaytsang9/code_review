@@ -1,0 +1,43 @@
+{% extends 'index/base.html' %}
+
+{% block title %} Code Submission {% endblock %}
+
+{% block content %}
+<form class="form-control bg-dark" action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    <h3 class="text-light">Code Submission</h3>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="title" placeholder="Title">
+        <label for="title">Title</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="author" placeholder="Author">
+        <label for="author">Author</label>
+    </div>
+    <div class="form-floating mb-3">
+        <textarea class="form-control" id="code" style="height:325px;" placeholder="Type Your Code Here"></textarea>
+        <label for="code">Type Your Code Here</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select name="language" id="language" class="form-select" style="height:60px;">
+            <option selected>Choose Language...</option>
+            <option value="PY">Python</option>
+            <option value="JS">JS</option>
+            <option value="PHP">PHP</option>
+            <option value="JAVA">JAVA</option>
+            <option value="CPP">C++</option>
+            <option value="C">C</option>
+            <option value="SQL">SQL</option>
+        </select>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="votes" placeholder="Votes">
+        <label for="votes">Votes</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="date" placeholder="Date">
+        <label for="date">Date</label>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+{% endblock %}

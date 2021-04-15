@@ -2,14 +2,48 @@
 
 {% block title %} Reviews {% endblock %}
 
-{% block content %}
+{% block left %}
 <div class="list-group">
-    <button type="button" class="list-group-item list-group-item-action">Python</button>
-    <button type="button" class="list-group-item list-group-item-action">JavaScript</button>
-    <button type="button" class="list-group-item list-group-item-action">Java</button>
-    <button type="button" class="list-group-item list-group-item-action">C++</button>
-    <button type="button" class="list-group-item list-group-item-action">C</button>
-    <button type="button" class="list-group-item list-group-item-action">PHP</button>
-    <button type="button" class="list-group-item list-group-item-action">SQL</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">Python</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">JavaScript</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">Java</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">C++</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">C</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">PHP</button>
+    <button type="button" class="list-group-item list-group-item-action bg-dark text-light">SQL</button>
 </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-light" for="btnradio1">Hot</label>
+        
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-light" for="btnradio2">Top Weekly</label>
+        
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-light" for="btnradio3">Top Monthly</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-primary" href="{% url 'create' %}">Submit Your Code</a>
+        </div>
+    </div>
+    {% for review in reviews %}
+    <div class="card bg-dark text-light">
+        <div class="card-body">
+            <h5 class="card-title">{{ review.title }} - {{review.votes}} Votes</h5>
+            <p class="card-text">User: {{ review.author }}</p>
+            <div class="card">
+                <p class="card-text text-dark">{{ review.code }}</p>
+            </div>
+            <p href="#" class="card-link">{{ review.get_lang_type_display }}</p>
+            <p href="#" class="card-link">{{ review.date }}</p>
+            <button type="button" class="btn btn-info">Reply</button>
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}
