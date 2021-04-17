@@ -1,0 +1,23 @@
+#logo{
+    height:60px;
+    width:60px;
+    border-radius:50%;
+}
+
+#create{
+    float:right;
+}
+
+.navbar{
+    margin-bottom:15px;
+    padding: 0 0 0 0;
+}
+
+.search{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-posts{
+    margin: 10px 0 10px 0;
+}

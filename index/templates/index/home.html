@@ -1,5 +1,4 @@
 {% extends 'index/base.html' %}
-{% load static %}
 
 {% block title %} Reviews {% endblock %}
 
@@ -12,10 +11,6 @@
     <button type="button" class="list-group-item list-group-item-action bg-dark text-light">C</button>
     <button type="button" class="list-group-item list-group-item-action bg-dark text-light">PHP</button>
     <button type="button" class="list-group-item list-group-item-action bg-dark text-light">SQL</button>
-</div>
-
-<div>
-    <img src="{% static 'index/leo.png' %}" alt="laughing leo" style="height:150px;width:150px;">
 </div>
 {% endblock %}
 
@@ -34,11 +29,11 @@
             </div>
         </div>
         <div class="col-md-3">
-            <a class="btn btn-primary" href="{% url 'create' %}">Submit Your Code</a>
+            <a id="create" class="btn btn-info" href="{% url 'create' %}">Create Submission</a>
         </div>
     </div>
     {% for review in reviews %}
-    <div class="card bg-dark text-light">
+    <div class="home-posts card bg-dark text-light">
         <div class="card-body">
             <h5 class="card-title">{{ review.title }} - {{review.votes}} Votes</h5>
             <p class="card-text">User: {{ review.author }}</p>

@@ -18,7 +18,7 @@ class Review(models.Model):
         ]
     )
     votes = models.IntegerField()
-    date = models.DateField()
+    date = models.DateTimeField()
     def __str__(self):
             return self.get_language_display()
 
