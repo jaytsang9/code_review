@@ -17,10 +17,9 @@ class Review(models.Model):
             ('SQL', 'SQL')
         ]
     )
-    votes = models.IntegerField()
     date = models.DateField()
 
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
-        fields = ['title', 'author', 'code', 'language', 'votes', 'date']
+        fields = ['title', 'author', 'code', 'language', 'date']
