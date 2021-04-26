@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import request, HttpResponse, HttpResponseRedirect
+from django.http import request, HttpResponse, HttpResponseRedirect,JsonResponse
 from django.urls import reverse
 from reviews.models import Review, ReviewForm 
 
@@ -18,3 +18,13 @@ def create(request):
     else:
         form = ReviewForm()
     return render(request, 'index/create.html', {'form':form})
+
+def py_reviews(request):
+    reviews = Review.objects.filter(language='Python')[0]
+    data = {
+        "title": reviews.title,
+        "user": reviews.author,
+        "language": reviews.language,
+    }
+
+    return JsonResponse(data)

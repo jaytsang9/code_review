@@ -8,11 +8,11 @@ class Review(models.Model):
     language = models.CharField(
         max_length = 12,
         choices=[
-            ('PY', 'Python'),
-            ('JS', 'JavaScript'),
+            ('Python', 'Python'),
+            ('JavaScript', 'JavaScript'),
             ('PHP', 'PHP'),
-            ('JAVA', 'Java'),
-            ('CPP', 'C++'),
+            ('Java', 'Java'),
+            ('C++', 'C++'),
             ('C', 'C'),
             ('SQL', 'SQL')
         ]
