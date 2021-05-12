@@ -55,7 +55,7 @@ def register(request):
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "auctions/register.html")
+        return render(request, "index/register.html")
 
 def login_view(request):
     if request.method == "POST":
@@ -74,4 +74,4 @@ def login_view(request):
                 "message": "Invalid username and/or password."
             })
     else:
-        return render(request, "auctions/login.html")
+        return render(request, "index/login.html")
