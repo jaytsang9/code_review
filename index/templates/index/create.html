@@ -7,16 +7,17 @@
     {% csrf_token %}
     <h3 class="text-light">Code Submission</h3>
 
+    {% load crispy_forms_tags %}
+    {% crispy form %}
 
-
-    {{ form.non_field_errors }}
+    <!-- {{ form.non_field_errors }}
     {% for field in form %}
         <div class="form-control form-floating mb-3">
             {{ field.errors }}
             {{ field }}
             {{ field.label_tag }}
         </div>
-    {% endfor %}
+    {% endfor %} -->
     <input class="btn btn-primary" type="submit" value="Submit">
 
     
