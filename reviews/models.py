@@ -23,3 +23,7 @@ class ReviewForm(ModelForm):
     class Meta:
         model = Review
         fields = ['title', 'author', 'code', 'language', 'date']
+        widgets = {
+            
+        }
+
