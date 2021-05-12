@@ -1,6 +1,5 @@
 from django.db import models
 from django.forms import ModelForm
-from crispy_forms.helper import FormHelper
 
 class Review(models.Model):
     title = models.CharField(max_length=64)
@@ -18,13 +17,10 @@ class Review(models.Model):
             ('SQL', 'SQL')
         ]
     )
-    date = models.DateField()
+    date = models.DateTimeField()
 
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
         fields = ['title', 'author', 'code', 'language', 'date']
-        helper = FormHelper()
-        helper.form_class = 'form-control'
-        helper.form_method = 'post'
 

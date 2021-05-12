@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import request, HttpResponse, HttpResponseRedirect,JsonResponse
+from django.http import request, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from reviews.models import Review, ReviewForm 
 from django.contrib.auth.decorators import login_required
@@ -10,7 +10,6 @@ def home(request):
     context = {'reviews': reviews}
     return render(request, 'index/home.html', context)
 
-@login_required
 def create(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -57,7 +56,7 @@ def register(request):
     else:
         return render(request, "index/register.html")
 
-def login_view(request):
+def login(request):
     if request.method == "POST":
 
         # Attempt to sign user in

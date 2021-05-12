@@ -3,13 +3,15 @@
 {% block title %} Code Submission {% endblock %}
 
 {% block content %}
+
 <form class="form-control bg-dark" action="{% url 'create' %}" method="POST">
+
     {% csrf_token %}
     <h3 class="text-light">Code Submission</h3>
 
-    {% load crispy_forms_tags %}
+    {{ form }}
+    <!-- {% load crispy_forms_tags %}
     {% crispy form %}
-
     <!-- {{ form.non_field_errors }}
     {% for field in form %}
         <div class="form-control form-floating mb-3">
@@ -17,7 +19,7 @@
             {{ field }}
             {{ field.label_tag }}
         </div>
-    {% endfor %} -->
+    {% endfor %} --> -->
     <input class="btn btn-primary" type="submit" value="Submit">
 
     
