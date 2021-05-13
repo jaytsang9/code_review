@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +18,16 @@
             crossorigin="anonymous"></script>
     <script>
         function py_reviews() {
-            $.get("py_reviews", function(data, status) {
-                alert("Data: \n" + "Title: " + data["title"] + "\nUser: " + data["user"] + "\nLanguage: " + data["language"] + "\nStatus: " + status);
-            });
+           $.get("py_reviews", function(data, status) {
+               alert("Data: \n" + "Title: " + data["title"] + "\nUser: " + data["user"] + "\nLanguage: " + data["language"] + "\nStatus: " + status);
+           });
+            // $.get("py_reviews", function(data, status) {
+            //   $.each(data.dates, function(i, val) {
+            //     $('').empty().append(
+            //       $('').addClass('list-group-item list-group-item-success').text(val)
+            //     )
+            //   });
+            // });
         }
     </script>
     <title>{% block title %}{% endblock %}</title>
@@ -32,20 +40,31 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            {% if not user.is_authenticated %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                <a class="nav-link" href="{% provider_login_url 'github' %}">Register</a>
               </li>
             </ul>
+            {% endif %}
             <form class="search d-flex form-inline">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </form>
           </div>
         </div>
     </nav>
+    {% if user.is_authenticated %}
+      <div class="alert alert-success" role="alert">
+        Welcome back, {{user.username}}!!!
+      </div>
+    {% else %}
+      <div class="alert alert-danger" role="alert">
+        Oops, something went wrong! Try again.
+      </div>
+    {% endif %}
     <div class="container">
       <div class="row">
         <div class="col-md-3">
