@@ -8,4 +8,5 @@ urlpatterns = [
     path('py_reviews', views.py_reviews, name='py_reviews'),
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
+    path('review/<int:num>/', views.show_review, name='review'),
 ]

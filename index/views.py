@@ -3,6 +3,7 @@ from django.http import request, HttpResponse, HttpResponseRedirect, JsonRespons
 from django.urls import reverse
 from reviews.models import Review, ReviewForm 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
@@ -24,13 +25,19 @@ def py_reviews(request):
     reviews = Review.objects.filter(language='Python')[0]
     data = {
         "title": reviews.title,
-        "user": reviews.author,
+        "user": reviews.user,
         "language": reviews.language,
     }
 
     return JsonResponse(data)
 
+def show_review(request, num):
+    review = Review.objects.filter(id=num)
+    context = {'review': review}
+    return render(request, "index/review.html", context)
+
 def login(request):
+
     return render(request, "index/login.html")
 
 def register(request):

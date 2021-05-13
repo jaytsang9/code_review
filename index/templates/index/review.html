@@ -1,0 +1,24 @@
+{% extends 'index/base.html' %}
+
+{% block title %} Code {% endblock %}
+
+{% block left %}
+<a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+{% endblock%}
+
+{% block content %}
+{% for one in review %}
+<div class="home-posts card bg-dark text-light">
+    <div class="card-body">
+        <h5 class="card-title">{{ one.title }}</h5>
+        <p class="card-text">User: {{ one.user }}</p>
+        <div class="card">
+            <p class="card-text text-dark">{{ one.code }}</p>
+        </div>
+        <p class="card-link">{{ one.get_lang_type_display }}</p>
+        <p class="card-link">{{ one.date }}</p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

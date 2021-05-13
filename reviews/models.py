@@ -3,7 +3,7 @@ from django.forms import ModelForm
 
 class Review(models.Model):
     title = models.CharField(max_length=64)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.CharField(max_length=64)
     code = models.TextField()
     language = models.CharField(
         max_length = 12,
@@ -22,5 +22,5 @@ class Review(models.Model):
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
-        fields = ['title', 'code', 'language', 'date']
+        fields = ['title', 'user', 'code', 'language', 'date']
 

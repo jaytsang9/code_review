@@ -3,9 +3,16 @@
 {% block title %} Reviews {% endblock %}
 
 {% block left %}
-<div class="list-group">
-    <button type="button" onclick="py_reviews()">Get first Python review</button>
+<div class="list-group btn-group" role="group" aria-label="Basic radio toggle button group">
+    <button type="button" onclick="py_reviews()" class="btn btn-outline-light">Python</button>
+    <button type="button" onclick="js_reviews()" class="btn btn-outline-light">JavaScript</button>
+    <button type="button" onclick="php_reviews()" class="btn btn-outline-light">PHP</button>
+    <button type="button" onclick="java_reviews()" class="btn btn-outline-light">Java</button>
+    <button type="button" onclick="cpp_reviews()" class="btn btn-outline-light">C++</button>
+    <button type="button" onclick="c_reviews()" class="btn btn-outline-light">C</button>
+    <button type="button" onclick="sql_reviews()" class="btn btn-outline-light">SQL</button>
 </div>
+
 {% endblock %}
 
 {% block content %}
@@ -27,17 +34,19 @@
         </div>
     </div>
     {% for review in reviews reversed %}
-    <div class="home-posts card bg-dark text-light">
-        <div class="card-body">
-            <h5 class="card-title">{{ review.title }}</h5>
-            <p class="card-text">User: {{ review.user }}</p>
-            <div class="card">
-                <p class="card-text text-dark">{{ review.code }}</p>
+    <a href="{% url 'review' num=review.id %}" style="text-decoration: none;">
+        <div class="home-posts card bg-dark text-light">
+            <div class="card-body">
+                <h5 class="card-title">{{ review.title }}</h5>
+                <p class="card-text">User: {{ review.user }}</p>
+                <div class="card">
+                    <p class="card-text text-dark">{{ review.code }}</p>
+                </div>
+                <p class="card-link">{{ review.get_lang_type_display }}</p>
+                <p class="card-link">{{ review.date }}</p>
+                <button type="button" class="btn btn-info">Reply</button>
             </div>
-            <p href="#" class="card-link">{{ review.get_lang_type_display }}</p>
-            <p href="#" class="card-link">{{ review.date }}</p>
-            <button type="button" class="btn btn-info">Reply</button>
         </div>
-    </div>
+    </a>
     {% endfor %}
 {% endblock %}
