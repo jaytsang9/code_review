@@ -46,16 +46,16 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav auth">
               <li class="nav-item">
-                <a class="nav-link" href="{% provider_signup_url 'github' %}">Login</a>
+                <a class="nav-link" href="#">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% provider_signup_url 'github' %}">Register</a>
+                <a class="nav-link" href="{% provider_login_url 'github' %}">Register</a>
               </li>
             </ul>
             {% else %}
             <ul class="navbar-nav auth">
               <li class="nav-item">
-                <a class="nav-link" href="{% url '/accounts/logout/' %}">Logout</a>
+                <a class="nav-link" href="{% url 'accounts/logout' %}">Logout</a>
               </li>
             </ul>
             {% endif %}
